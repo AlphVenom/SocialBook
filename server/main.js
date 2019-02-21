@@ -3,4 +3,5 @@ import '../lib/collections.js';
 
 Meteor.startup(() => {
   // code to run on server at startup
+  console.log("i am server");
 });
