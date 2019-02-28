@@ -19,16 +19,16 @@
 
 <template name ="addUser">
 	<!-- Button trigger modal -->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUserModal">
 		Add a User
 	</button>
 
 	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 	    	<div class="modal-content">
 	    		<div class="modal-header">
-	        		<h5 class="modal-title" id="exampleModalLabel">Add a user</h5>
+	        		<h5 class="modal-title" id="addUserModalLabel">Add a user</h5>
 	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 	        		</button>
@@ -81,9 +81,6 @@
 	{{#each profAll}}
 	<div id={{_id}} class="col-4">
 		<div class="row justify-content-end">
-			<div class="col-1">
-				<i  class="zmdi zmdi-hc-2x zmdi-delete js-delete"></i>
-			</div>
 			<div class="col-12">
 				<button type="button" class="js-profileedit btn btn-link">
 					<img class = "profilePic imgs" src = "{{img}}" alt="">
@@ -92,7 +89,7 @@
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-sm-4 text-center">
-				<h1>{{firstName}}</h1>
+				<h1>{{firstName}} {{lastName}}</h1>
 			</div>
 		</div>
 		<div class ="row justify-content-center">
@@ -108,37 +105,31 @@
 			</div>
 		</div>
 
-		<div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="editmodal" tabindex="-1" role="dialog" aria-labelledby="editmodalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 		    	<div class="modal-content">
 		    		<div class="modal-header">
-		        		<h5 class="modal-title" id="editmodal">Add a user</h5>
+		        		<h5 class="modal-title" id="editmodal">Profile Information</h5>
 		        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 		        		</button>
 		      		</div>
 		      		
-		      		<div class="modal-body">
-		      			<div class="input-group mb-3">
-						 	<div class="input-group-prepend">
-						    	<span class="input-group-text" id="basic-addon1">First Name</span>
-	  						</div>
-							<input type="text" name="firstName" class="form-control" placeholder="Dio" aria-label="Username" aria-describedby="basic-addon1">
-						</div>
+		      		<div class="modal-body" id="viewUserProfile">
+		      			<input id="userId" type="text">
+		      			<img class="profPic" src="" alt="">
+		      			<div class="row">
+		      				
+		      					<div class="col">
+		      						Name : {{firstName}} {{lastName}}<br>
+		      						Likes : {{like}}<br>
+		      						Dislikes : {{dislike}}<br>
+		      					</div>
+		      				</div>	
+		      				<button type="button" class="btn btn-warning">Edit</button>
+		      				<i  class="zmdi zmdi-hc-2x zmdi-delete js-delete"></i>
 
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text" id="basic-addon1">Last Name</span>
-						  	</div>
-						  	<input type="text" name="lastName" class="form-control" placeholder="Brando" aria-label="Username" aria-describedby="basic-addon1">
-						</div>
 
-						<div class="input-group mb-3">
-						  	<div class="input-group-prepend">
-						    	<span class="input-group-text" id="basic-addon1">@</span>
-						  	</div>
-						  	<input type="text" name="image" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -147,7 +138,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 	{{/each}}
 </template>

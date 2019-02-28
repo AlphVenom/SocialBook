@@ -46,18 +46,18 @@ Template.profile.events({
     
     'click .js-profileedit'(event, instance) {
     $("#editmodal").modal('show');
-    console.log("open modal");
-	}
-	
-
+    var uId = this._id;
+	$("#userId").val(uId);
+	$('#viewUserProfile img').attr('src',userDB.findOne({_id:uId}).img);
+	},
 });
 
 Template.addUser.events({
 	'click .js-saveProfile'(event, instance){
 		//get user data
-	var fName = $("#exampleModal input[name='firstName']").val();
-	var lName = $("#exampleModal input[name='lastName']").val();
-	var image = $("#exampleModal input[name='image']").val();
+	var fName = $("#addUserModal input[name='firstName']").val();
+	var lName = $("#addUserModal input[name='lastName']").val();
+	var image = $("#addUserModal input[name='image']").val();
 	if (image == ""){
 		image="giphy.gif";
 	}	
@@ -65,11 +65,11 @@ Template.addUser.events({
 	console.log("The last name is", lName);
 	console.log("The image is", image);
 		//Reset the form
-	$("#exampleModal input[name='firstName']").val('');
-	$("#exampleModal input[name='lastName']").val('');
-	$("#exampleModal input[name='image']").val('');
+	$("#addUserModal input[name='firstName']").val('');
+	$("#addUserModal input[name='lastName']").val('');
+	$("#addUserModal input[name='image']").val('');
 		//Close the modal
-	$("#exampleModal").modal("hide");
+	$("#addUserModal").modal("hide");
 	userDB.insert({'firstName':fName, 'lastName':lName, 'img':image});	
 
 	
