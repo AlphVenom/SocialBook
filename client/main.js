@@ -43,7 +43,13 @@ Template.profile.events({
     console.log("You have", numdisLikes);
     userDB.update({_id:ProFid}, {$set:{'dislike':numdisLikes}});
     },
-      	
+    
+    'click .js-profileedit'(event, instance) {
+    $("#editmodal").modal('show');
+    console.log("open modal");
+	}
+	
+
 });
 
 Template.addUser.events({
